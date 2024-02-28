@@ -14,6 +14,7 @@
                     <th>{{ __('Mã Team') }}</th>
                     <th>{{ __('Tên Team') }}</th>
                     <th>{{ __('Tên bộ phận') }}</th>
+                    <th>{{__('Note')}}</th>
                 </tr>
             </thead>
             <tbody>
@@ -22,20 +23,36 @@
                     <td>{{$row->team_id}}</td>
                     <td>{{$row->team_name}}</td>
                     <td>{{$row->department_name}}</td>
+                    <td>
+                        <a href="{{ route('EditTeam',$row->team_id)}}">Sửa</a>
+                        {{-- <a href="{{ route('DeleteTeam',$row->team_id)}}">Xóa</a> --}}
+                        <button onclick="confirm()"></button>
+                    </td>
                 </tr>
                 @endforeach
             </tbody>
         </table>
         <script>
+            function confirm(){
+                if(confirm("Bạn có muốn thực hiện hành động này không") == true){
+                    document.getElementById("demo").innerHTML = 
+                    "Bạn không muốn tiếp tục";
+                }else{
+                    document.getElementById("demo").innerHTML = 
+                    "Bạn không muốn tiếp tục";
+                }
+            }
+        </script>
+        {{-- <script>
             function hello(id,name,la){
                 document.getElementById("team_id").value = id;
                 document.getElementById("team_name").value = name;
                 document.getElementById("department_name").value = la;
             }
-        </script>
+        </script> --}}
     </div>
     <div>
-        <form>
+        {{-- <form>
             <label for="team_id">Mã Team</label>
             <input type="text" id="team_id" name="team_id" disabled><br>
             <label for="team_name">Tên Team</label>
@@ -45,11 +62,11 @@
                 @foreach($department as $row)
                 <option value="{{$row->department_name}}">{{$row->department_name}}</option>
                 @endforeach
-            </select></br>
-            <input type="submit" value="Thêm">
-            <input type="submit" value="Sủa">
-            <input type="submit" value="Xóa">
-          </form> 
+            </select></br> --}}
+            <a href="{{ route('AddTeam')}}">Thêm</a>
+            {{-- <a href="{{ route('EditTeam')}}">Sửa</a>
+            <a href="{{ route('DeleteTeam')}}">Xóa</a> --}}
+          {{-- </form>  --}}
     </div>
 </body>
 </html>

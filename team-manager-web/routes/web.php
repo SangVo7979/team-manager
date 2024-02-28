@@ -17,4 +17,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/listOfTeam', 'App\Http\Controllers\Admin\AdminController@index');
+Route::get('/listOfTeam', 'App\Http\Controllers\Admin\AdminController@index')->name('listOfTeam');
+Route::get('/AddTeam', 'App\Http\Controllers\Admin\AdminController@addTeam')->name('AddTeam');
+Route::post('/AddDB', 'App\Http\Controllers\Admin\AdminController@AddDB')->name('AddDB');
+Route::get('/edit/{id}', 'App\Http\Controllers\Admin\AdminController@editTeam')->name('EditTeam');
+Route::post('/UpdateDB/{id}', 'App\Http\Controllers\Admin\AdminController@UpdateDB')->name('UpdateDB');
+Route::get('/delete/{id}', 'App\Http\Controllers\Admin\AdminController@DeleteTeam')->name('DeleteTeam');
+
+

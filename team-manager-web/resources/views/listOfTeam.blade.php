@@ -5,10 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Danh Sách Team</title>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-latest.pack.js"></script>
+    {{-- <link href="{{asset('public/css/style.css') }}" rel='stylesheet' type='text/css' /> --}}
+    <link href="css/style.css" rel='stylesheet' type='text/css' />
 </head>
 <body>
     <div>
-        <table border="1">
+        <h1>DANH SÁCH TEAM</h1>
+        <table>
             <thead>
                 <tr>
                     <th>{{ __('Mã Team') }}</th>
@@ -19,30 +23,20 @@
             </thead>
             <tbody>
                 @foreach($teams as $row)
-                <tr onclick="hello('{{$row->team_id}}','{{$row->team_name}}','{{$row->department_name}}')" id="{{$row->team_id}}">
+                <tr id="{{$row->team_id}}">
+                    {{-- <tr onclick="hello('{{$row->team_id}}','{{$row->team_name}}','{{$row->department_name}}')" id="{{$row->team_id}}"> --}}
                     <td>{{$row->team_id}}</td>
                     <td>{{$row->team_name}}</td>
                     <td>{{$row->department_name}}</td>
                     <td>
-                        <a href="{{ route('EditTeam',$row->team_id)}}">Sửa</a>
-                        {{-- <a href="{{ route('DeleteTeam',$row->team_id)}}">Xóa</a> --}}
-                        <button onclick="confirm()"></button>
+                        <a href="{{ route('EditTeam',$row->team_id)}}"><button class="btn btn-edit">Sửa</button></a>
+                        <a onclick="return confirm('Bạn có muốn thực hiện hành động này không?')" href="{{ route('DeleteTeam',$row->team_id)}}"><button class="btn btn-del">Xóa</button></a>
                     </td>
                 </tr>
                 @endforeach
             </tbody>
+            <p id="demo"></p>
         </table>
-        <script>
-            function confirm(){
-                if(confirm("Bạn có muốn thực hiện hành động này không") == true){
-                    document.getElementById("demo").innerHTML = 
-                    "Bạn không muốn tiếp tục";
-                }else{
-                    document.getElementById("demo").innerHTML = 
-                    "Bạn không muốn tiếp tục";
-                }
-            }
-        </script>
         {{-- <script>
             function hello(id,name,la){
                 document.getElementById("team_id").value = id;
@@ -63,7 +57,7 @@
                 <option value="{{$row->department_name}}">{{$row->department_name}}</option>
                 @endforeach
             </select></br> --}}
-            <a href="{{ route('AddTeam')}}">Thêm</a>
+            <a href="{{ route('AddTeam')}}"><button  class="btn btn-add">Thêm</button></a>
             {{-- <a href="{{ route('EditTeam')}}">Sửa</a>
             <a href="{{ route('DeleteTeam')}}">Xóa</a> --}}
           {{-- </form>  --}}

@@ -30,7 +30,7 @@ class AdminController extends Controller{
     public function AddDB(Request $request)
     {
         $User = DB::table('team')->insert([
-            'team_id' => $request->team_id,
+            'team_id' => strtoupper($request->team_id),
             'team_name' => $request->team_name,
             'department_id' => $request->department_id,
         ]);
@@ -39,29 +39,17 @@ class AdminController extends Controller{
 
     public function editTeam($id)
     {
-        // try {
-            $team = DB::table('team')->where('team_id',$id)->select('*');
-            $team = $team->get();
-            $department = DB::table('department')->select('*');
-            $department = $department->get();
-            return view('/EditTeam', compact('id','team','department'));
-            // if ($slide == null) {
-            //     return redirect()->route('Error404');
-            // }
-            // return view('Admin::SlidesManagement.slideDetail', [
-            //     'status' => SlideStatus::toArray(),
-            //     'slide' => $slide,
-            //     'isInsert' => false,
-            // ]);
-        // } catch (\Exception $e) {
-        //     return redirect()->route('ServerError', ["error" => $e->getMessage()]);
-        // }
+        $team = DB::table('team')->where('team_id',$id)->select('*');
+        $team = $team->get();
+        $department = DB::table('department')->select('*');
+        $department = $department->get();
+        return view('/EditTeam', compact('id','team','department'));
     }
 
     public function UpdateDB(Request $request,$id)
     {
         $User = DB::table('team')->where('team_id',$id)->Update([
-            'team_id' => $request->team_id,
+            'team_id' => strtoupper($request->team_id),
             'team_name' => $request->team_name,
             'department_id' => $request->department_id,
         ]);

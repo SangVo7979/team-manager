@@ -8,11 +8,19 @@
     <script type="text/javascript" src="https://code.jquery.com/jquery-latest.pack.js"></script>
     {{-- <link href="{{asset('public/css/style.css') }}" rel='stylesheet' type='text/css' /> --}}
     <link href="css/style.css" rel='stylesheet' type='text/css' />
+    <link rel="stylesheet" href="https://cdn.datatables.net/2.0.1/css/dataTables.dataTables.css" />
+  
+    <script src="https://cdn.datatables.net/2.0.1/js/dataTables.js"></script>
+    <script>
+        $(document).ready( function () {
+            $('#myTable').DataTable();
+        } );
+    </script>
 </head>
 <body>
     <div>
         <h1>DANH SÁCH TEAM</h1>
-        <table>
+        <table id="myTable">
             <thead>
                 <tr>
                     <th>{{ __('Mã Team') }}</th>

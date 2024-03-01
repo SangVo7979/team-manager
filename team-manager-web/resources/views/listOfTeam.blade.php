@@ -66,6 +66,7 @@
                 @endforeach
             </select></br> --}}
             <a href="{{ route('AddTeam')}}"><button  class="btn btn-add">Thêm</button></a>
+            <a href="{{ route('export')}}"><button  class="btn btn-export">Xuất exel</button></a>
             {{-- <a href="{{ route('EditTeam')}}">Sửa</a>
             <a href="{{ route('DeleteTeam')}}">Xóa</a> --}}
           {{-- </form>  --}}

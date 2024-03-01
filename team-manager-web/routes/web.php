@@ -24,4 +24,4 @@ Route::get('/edit/{id}', 'App\Http\Controllers\Admin\AdminController@editTeam')-
 Route::post('/UpdateDB/{id}', 'App\Http\Controllers\Admin\AdminController@UpdateDB')->name('UpdateDB');
 Route::get('/delete/{id}', 'App\Http\Controllers\Admin\AdminController@DeleteTeam')->name('DeleteTeam');
 
-
+Route::get('/export', 'App\Http\Controllers\ExportController@export')->name('export');
